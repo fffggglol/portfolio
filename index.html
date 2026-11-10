@@ -7,7 +7,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Instrument+Sans:wght@400;500&family=DM+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Instrument+Sans:wght@400;500&family=DM+Mono:wght@400&family=Cormorant+Garamond:ital,wght@1,400&family=Cinzel:wght@500&family=Pixelify+Sans:wght@500&family=Gloock&display=swap">
 <style>
 /* Layout: one continuous scroll. Hero window opens into the photo; Photography = an index of series names with a photo trail; each opens full-screen series with a parallax collage; drawings lie scattered like sheets on a table and gather into a wall on scroll; design cards stack. Soft single-look palette. */
 :root{
@@ -142,7 +142,27 @@ img{display:block}
 /* Design: stacking cards */
 .deck{padding-bottom:20vh;padding-left:var(--side-l);padding-right:var(--side-r)}
 .dcard{position:sticky;top:calc(84px + env(safe-area-inset-top,0px));min-height:72vh;margin-bottom:6vh;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);background:#F3EFEE;border-radius:14px;overflow:hidden;box-shadow:0 -1px 0 rgba(58,50,52,.06),0 30px 60px -40px rgba(58,50,52,.5);transform-origin:center top}
-.dcard .ph{min-height:42vh;cursor:zoom-in;border:0;padding:0;display:block;width:100%}
+.dcover{border:0;padding:0;margin:0;display:block;width:100%;min-height:42vh;cursor:pointer;background:#E1DCDA;overflow:hidden;position:relative}
+.dcover>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.dcover .quad{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;background:#E1DCDA}
+.dcover .q{position:relative;overflow:hidden;display:block}
+.dcover .q>img{width:100%;height:100%;object-fit:cover;object-position:left center;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.dcover:hover .q>img{transform:scale(1.04)}
+.dcover .q .mock{position:absolute;inset:0;border-radius:0;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.dcover .mock-h{font-size:clamp(16px,2.1vw,30px)!important}
+.dcover .mock-soon{display:none}
+.dcover:hover .q .mock,.dcover:hover>img{transform:scale(1.04)}
+.dmeta h3 .dsub{display:block;margin-top:8px;font-style:italic;font-size:.5em;color:var(--rose);letter-spacing:-.01em}
+.dshort{margin:0;max-width:52ch}
+.dbtns{margin-top:auto;display:flex;flex-wrap:wrap;gap:12px 24px}
+.dbtns .go{margin-top:0;background:none;border:0;border-bottom:1px solid var(--rose);cursor:pointer;padding:0 0 3px}
+/* Mock screen used until real screenshots arrive */
+.mock{position:relative;width:100%;height:100%;background:var(--mbg);color:var(--mfg);display:flex;flex-direction:column;justify-content:center;gap:clamp(10px,2vw,22px);padding:clamp(14px,3vw,40px);overflow:hidden;border-radius:6px}
+.mock-nav{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:clamp(10px,1.6vw,18px) clamp(14px,3vw,40px);font-size:clamp(12px,1.3vw,17px)}
+.mock-links{display:flex;gap:8px}.mock-links i{display:block;width:clamp(14px,2vw,28px);height:2px;background:currentColor;opacity:.45}
+.mock-h{margin:0;max-width:13ch;line-height:1.02;letter-spacing:-.01em}
+.mock-btn{display:block;width:clamp(70px,9vw,130px);height:clamp(18px,2.2vw,30px);background:var(--mac);border-radius:999px}
+.mock-soon{position:absolute;left:clamp(14px,3vw,40px);bottom:12px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;opacity:.55}
 .dmeta{padding:clamp(20px,3vw,40px);display:flex;flex-direction:column;gap:14px;min-width:0}
 .dmeta .no{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--rose)}
 .dmeta h3{margin:0;font-family:var(--display);font-weight:360;font-size:clamp(30px,3.4vw,52px);line-height:1;letter-spacing:-.02em;font-variation-settings:"SOFT" 100,"opsz" 96}
@@ -150,7 +170,57 @@ img{display:block}
 .facts dt{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);padding-top:2px}
 .facts dd{margin:0}
 .dmeta .go{margin-top:auto;align-self:flex-start;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--rose);padding-bottom:3px}
-@media (max-width:760px){.dcard{grid-template-columns:1fr;min-height:0}.dcard .ph{min-height:34vh}}
+@media (max-width:760px){.dcard{grid-template-columns:1fr;min-height:0}.dcover{min-height:34vh}}
+
+/* Case study */
+.case{position:fixed;inset:0;z-index:70;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;background:var(--paper);color:var(--graphite);--sbg:var(--paper)}
+.case .sbar a.back{text-decoration:none}
+.cwrap{max-width:1180px;margin:0 auto;padding-bottom:12vh;padding-left:var(--side-l);padding-right:var(--side-r)}
+.ceyebrow{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--rose)}
+.chero{padding-block:10vh 8vh;display:grid;gap:18px}
+.chero h2{margin:0;overflow:hidden;font-family:var(--display);font-weight:320;font-size:clamp(72px,15vw,220px);line-height:.86;letter-spacing:-.045em;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 144;padding-bottom:.06em}
+.chero h2 .w{display:inline-block}
+.csub{margin:0;font-family:var(--display);font-style:italic;font-weight:340;font-size:clamp(24px,3vw,40px);color:var(--rose);font-variation-settings:"SOFT" 100,"opsz" 72}
+.clede{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,64px);margin-top:4vh}
+.clede p{margin:0;font-size:17px;line-height:1.6}
+.clede .big{font-family:var(--display);font-size:clamp(20px,1.9vw,26px);line-height:1.35;font-variation-settings:"SOFT" 100,"opsz" 36}
+.idswitch{--idbg:#F6F0E6;--idac:#A7B49B;padding-block:7vh;border-top:1px solid var(--stone);display:grid;gap:28px}
+.cblock-head{display:grid;grid-template-columns:minmax(160px,.4fr) minmax(0,1fr);gap:24px;align-items:baseline}
+.cblock-head p{margin:0;max-width:62ch;font-size:17px}
+.idgrid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(20px,3vw,48px);align-items:start}
+.idstage{aspect-ratio:16/9;border-radius:8px;overflow:hidden;background:var(--idbg);box-shadow:0 1px 2px rgba(58,50,52,.1),0 30px 60px -36px rgba(58,50,52,.55);transition:background-color .5s ease}
+.idstage>img{width:100%;height:100%;object-fit:contain;object-position:center;display:block}
+.idinfo{display:flex;flex-direction:column;gap:10px;min-width:0}
+.idinfo .ino{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--mute)}
+.idinfo h4{margin:0;font-family:var(--display);font-weight:340;font-size:clamp(34px,3.6vw,56px);line-height:1;letter-spacing:-.025em;font-variation-settings:"SOFT" 100,"opsz" 96}
+.idinfo .imood{margin:0 0 10px;font-style:italic;color:var(--mute)}
+.idinfo .facts{gap:10px 18px}
+.sw{display:flex;gap:4px;margin-bottom:6px}
+.swc{width:22px;height:22px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(58,50,52,.15)}
+.idbar{justify-self:center;display:flex;gap:6px;padding:6px;border-radius:999px;background:#fff;box-shadow:0 1px 2px rgba(58,50,52,.12),0 14px 30px -18px rgba(58,50,52,.5)}
+.idbar button{display:flex;align-items:center;gap:8px;border:0;background:none;cursor:pointer;border-radius:999px;padding:9px 14px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);transition:background-color .3s,color .3s}
+.idbar svg{width:18px;height:18px;flex:none}
+.idbar button[aria-selected="true"]{background:var(--graphite);color:var(--paper)}
+.idbar button:hover:not([aria-selected="true"]){color:var(--graphite)}
+.cquote{margin:8px auto 0;max-width:60ch;text-align:center;font-family:var(--display);font-style:italic;font-size:clamp(19px,1.8vw,24px);line-height:1.4;font-variation-settings:"SOFT" 100,"opsz" 36}
+.cblock{display:grid;grid-template-columns:minmax(160px,.4fr) minmax(0,1fr);gap:24px;padding-block:6vh;border-top:1px solid var(--stone)}
+.cblock>div{max-width:66ch}
+.cblock p{margin:0 0 14px;font-size:17px;line-height:1.6}
+.cblock h4{margin:22px 0 10px;font-family:var(--display);font-weight:400;font-size:22px;font-variation-settings:"SOFT" 100,"opsz" 36}
+.clist{margin:0;padding:0;list-style:none;display:grid;gap:12px}
+.clist li{padding-left:20px;position:relative;line-height:1.55}
+.clist li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--blush);box-shadow:inset 0 0 0 1px var(--rose)}
+.clist b{font-weight:500}
+.csteps{margin:0 0 16px;padding-left:22px;display:grid;gap:6px;line-height:1.55}
+.csteps li::marker{font-family:var(--mono);font-size:12px;color:var(--rose)}
+.cnote{margin-top:18px;padding:16px 18px;border-left:2px solid var(--rose);background:color-mix(in srgb,var(--blush) 45%,transparent)}
+.cnote p:last-child{margin:0}
+.cend{border-top:1px solid var(--stone);padding-top:6vh}
+.cproto{display:inline-block;text-decoration:none}
+.cproto small{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-bottom:10px}
+.cproto span{font-family:var(--display);font-weight:330;font-size:clamp(40px,7vw,104px);line-height:.95;letter-spacing:-.03em;font-variation-settings:"SOFT" 100,"opsz" 144;transition:color .3s}
+.cproto:hover span{color:var(--rose)}
+@media (max-width:860px){.clede,.idgrid,.cblock,.cblock-head{grid-template-columns:1fr}.idbar button span{display:none}.idbar button{padding:10px}}
 
 /* About */
 .about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:32px;padding-block:16vh 10vh;border-top:1px solid var(--stone);margin-left:var(--side-l);margin-right:var(--side-r)}
@@ -236,7 +306,7 @@ img{display:block}
     <div class="intro">
       <h2>Web &amp; graphic <em>design</em></h2>
       <div>
-        <span class="count">6 projects</span>
+        <span class="count">Web design · Graphic design</span>
         <p class="lede"><span class="todo">Your intro to design work: websites, banners, packaging, and how you approach a brief.</span></p>
       </div>
     </div>
@@ -253,6 +323,14 @@ img{display:block}
   </section>
   <footer class="foot"><span>© 2026 Mishel Bila</span><span>All work by the artist unless noted</span></footer>
 </main>
+
+<section class="case" id="case" aria-label="Case study" hidden>
+  <div class="sbar">
+    <button class="back" id="cBack" type="button">← All design</button>
+    <a class="back" id="cProtoTop" href="#" target="_blank" rel="noopener">Open prototype ↗</a>
+  </div>
+  <article class="cwrap" id="caseBody"></article>
+</section>
 
 <section class="series" id="series" aria-label="Photo series" hidden>
   <div class="sbar">
@@ -515,19 +593,158 @@ img{display:block}
   let tx=null;viewer.addEventListener("touchstart",e=>{tx=e.touches[0].clientX},{passive:true});
   viewer.addEventListener("touchend",e=>{if(tx===null||!vList)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)step(dx<0?1:-1);tx=null;});
 
-  /* ---------- Design placeholders (replace later) ---------- */
-  const D="Short description in your own words: why you made it and what the idea was.";
-  const design=["Website","Packaging","Banner set","Brand identity","Poster","App screens"].map(t=>({kind:"Web & graphic design",title:"Project name",type:t,year:"2025",client:"Client / school project",tools:"Figma, Illustrator",link:"#",desc:D}));
-  function designBg(i){const sets=[["#EED9DA","#C48C97"],["#D6CECC","#3A3234"],["#F3E6E4","#A9787F"],["#3A3234","#E7B9C1"],["#E8E3E1","#C48C97"],["#CFC4C6","#6E5A61"]];const s=sets[i%sets.length];
-    return `linear-gradient(135deg, ${s[0]} 0 55%, ${s[1]} 55% 100%)`;}
+  /* ---------- Design projects (texts are Mishel's own) ---------- */
+  const PROTO="https://www.figma.com/proto/12TBn2QgMo1mZaJ4vh21Uz/Untitled?node-id=192-4271&p=f&viewport=136%2C824%2C0.55&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=192%3A4271&page-id=0%3A1";
+  const PROJECTS=[{
+    id:"lumiere",no:"01",type:"Web design · Concept",title:"Lumière",sub:"One Brand, Four Identities",year:"2026",
+    for:"Concept project (fictional brand)",tools:"Figma, Nano Banana",proto:PROTO,
+    short:"One flower studio, four completely different websites. Lumière is a concept project I designed to show that the same business, with the same content and the same products, can look and feel entirely different depending on its visual identity.",
+    intro:["Lumière is not a real business. It is a fictional boutique studio for rare and exotic flowers, created as a showcase case for my portfolio. Instead of one website, I designed four full identities for it: each with its own colour palette, typography, imagery and interactions, and a switcher that lets you jump between them in the prototype."],
+    idea:["Clients often think of design as “making it pretty”. I wanted to show that design is a set of decisions, and that changing those decisions changes how a brand is perceived, even when nothing else changes.",
+          "So the rules were strict: every version keeps exactly the same business, the same products and the same information. Only the visual language changes."],
+    same:[["Structure","hero, our philosophy, this season's rarities, how it works, journal, newsletter, inquiry page and footer"],
+          ["Products","six rare flowers: Black Dahlia, Ghost Orchid, Heliconia, Bleeding Heart Vine, Bird of Paradise and Camellia Japonica"],
+          ["Copy","the same headlines, descriptions and calls to action"],
+          ["Logo","the Lumière wordmark stays the same, so it is clearly one brand"]],
+    versions:[
+      {key:"romantic",no:"01",name:"Romantic",mood:"Soft, delicate, feminine",palette:[["Cream","#F5F0E3"],["Blush pink","#E499A0"],["Sage green","#A7B49B"]],
+       type:"Elegant italic serif headlines with a clean sans",details:"Floating peonies, airy whitespace, a sage running line",
+       mock:{bg:"#F5F0E3",fg:"#3A3229",accent:"#E499A0",font:"'Cormorant Garamond',Georgia,serif",style:"italic",tt:"none",size:"clamp(26px,4.4vw,58px)"}},
+      {key:"editorial",no:"02",name:"Editorial",mood:"Quiet, intellectual, gallery-like",palette:[["Warm grey","#F4F4F4"],["Stone","#858585"],["Charcoal","#2E2B28"]],
+       type:"Three-font hierarchy: uppercase glyphic serif, calligraphic italic, neutral grotesque",details:"Antique lace frames, numbered editorial index, flower photos appearing on hover",
+       mock:{bg:"#F4F4F4",fg:"#2E2B28",accent:"#858585",font:"'Cinzel',Georgia,serif",style:"normal",tt:"uppercase",size:"clamp(20px,3.2vw,42px)"}},
+      {key:"pixel",no:"03",name:"Pixel",mood:"Playful, cozy, game-like",palette:[["Paper cream","#FFF6E3"],["Ink purple","#2A1E3E"],["Bloom pink","#F9A8D4"],["Leaf green","#4CB050"],["Sky blue","#8ED1FC"]],
+       type:"Pixelify Sans, Space Mono for the game interface, Inter for reading",details:"Hard pixel shadows, notched corners, pixel icons, sky and grass section edges",
+       mock:{bg:"#8ED1FC",fg:"#2A1E3E",accent:"#F9A8D4",font:"'Pixelify Sans',ui-monospace,monospace",style:"normal",tt:"none",size:"clamp(22px,3.6vw,48px)"}},
+      {key:"night",no:"04",name:"Night Orangery",mood:"Dark, dramatic, museum-like",palette:[["Olive black","#1C291D"],["Deep green","#26321F"],["Cream","#F0E8DA"],["Copper","#B9763A"]],
+       type:"Gloock headlines, PP Editorial New details, Inter for reading",details:"Full-bleed dark flower photography, frosted glass, thin frame lines, film grain",
+       mock:{bg:"#1C291D",fg:"#F0E8DA",accent:"#B9763A",font:"'Gloock',Georgia,serif",style:"normal",tt:"none",size:"clamp(26px,4.2vw,56px)"}}],
+    headline:"Rare blooms, quietly extraordinary.",
+    headlineNote:"The same headline, “Rare blooms, quietly extraordinary.”, reads as a love letter in the romantic version, a gallery caption in the editorial one, a game title screen in the pixel one, and a museum poster at night in the orangery.",
+    interaction:["The whole project is a working Figma prototype, not a set of static screens."],
+    interList:[["Style switcher","a fixed control at the bottom of every page with four icons: a sun for Romantic, a newspaper for Editorial, a pixel sun for Pixel and a moon for Night Orangery. It sits in the same place in every version but is drawn in that version's own style, from a soft pill to a game hotbar to frosted glass."],
+      ["Working inquiry forms","visitors can actually type into the fields and tick the flowers they are interested in."],
+      ["Hover states","flower cards and the collection index reveal photos and details on hover."],
+      ["Galleries and carousels","“Meet the studio” opens a gallery of arrangements, and journal images can be scrolled."],
+      ["Interactions that match the style","pixel buttons press down like physical game buttons, and in the orangery the step numbers glow copper on hover."]],
+    imagery:["Every flower on the site is a real species that exists in nature. The imagery is a mix of real photographs and images I generated with AI.",
+      "For each version I adapted the imagery to the identity: light, airy cut-out peonies for the romantic version, quiet editorial photos for the grey one, and a matching series of dark, moody flower photographs for the night orangery. For the generated images I refined each one until the series worked together, keeping one lighting style, background and mood across a series so the flowers read as one collection."],
+    role:["I designed and built the whole project myself: the concept, all four identities, every page and section, the components and the interactive prototype in Figma."],
+    steps:["Collected references and defined the mood of the identity","Chose the palette and a clear type hierarchy","Rebuilt the same page structure in the new visual language, changing layouts where the style called for it","Generated and edited the imagery so it matched the identity","Added the interactions and connected everything in the prototype"],
+    toolsLine:"Tools: Figma for design, components and prototyping; Nano Banana for image generation.",
+    ai:["I also used Claude as an AI assistant along the way: for feedback on my screens, help writing image prompts, the design of the style switcher, and SVG assets I asked for in the pixel version: the pixel icons and UI kit elements.","The design decisions and all the hands-on work in Figma were mine."],
+    shows:["Lumière proves a simple point: identity is not decoration. With the same content, the same flowers and the same logo, the studio can feel romantic and gentle, calm and intellectual, playful and nostalgic, or dark and luxurious, and each version would attract a different client.",
+      "For me it was a way to show that I can work across very different styles, build a full visual system from scratch for each of them, and turn it into a working, interactive website prototype. Try the switcher at the bottom of the page and see the same studio four times."],
+    images:{romantic:"design/lumiere/romantic.jpg",editorial:"design/lumiere/editorial.jpg",pixel:"design/lumiere/pixel.jpg",night:"design/lumiere/night.jpg"},
+    thumbs:{romantic:"design/lumiere/thumb/romantic.jpg",editorial:"design/lumiere/thumb/editorial.jpg",pixel:"design/lumiere/thumb/pixel.jpg",night:"design/lumiere/thumb/night.jpg"}
+  }];
+
+  const ICONS={
+    romantic:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/><g stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/></g></svg>',
+    editorial:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h13v13a2 2 0 0 0 2 2H6a2 2 0 0 1-2-2z M17 9h3v9.5a2 2 0 0 1-2 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 9h7M7 12.5h7M7 16h4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>',
+    pixel:'<svg viewBox="0 0 24 24" aria-hidden="true" shape-rendering="crispEdges"><path fill="currentColor" d="M9 6h6v2h2v2h1v4h-1v2h-2v2H9v-2H7v-2H6v-4h1V8h2z M11 1h2v3h-2z M11 20h2v3h-2z M1 11h3v2H1z M20 11h3v2h-3z M4 4h2v2H4z M18 4h2v2h-2z M4 18h2v2H4z M18 18h2v2h-2z"/></svg>',
+    night:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 14.6A8 8 0 0 1 9.4 4.5a8 8 0 1 0 10.1 10.1z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>'};
+
+  function mockScreen(v,p){
+    const m=v.mock;
+    return `<div class="mock" style="--mbg:${m.bg};--mfg:${m.fg};--mac:${m.accent}">
+      <div class="mock-nav"><span style="font-family:${m.font};font-style:${m.style}">Lumière</span><span class="mock-links"><i></i><i></i><i></i></span></div>
+      <p class="mock-h" style="font-family:${m.font};font-style:${m.style};text-transform:${m.tt};font-size:${m.size}">${esc(p.headline)}</p>
+      <span class="mock-btn"></span><span class="mock-soon">${esc(v.name)} · screen coming soon</span></div>`;
+  }
+  function stageFor(p,v){
+    const img=p.images[v.key];
+    return img?`<img src="${img}" alt="${esc(p.title)}, ${esc(v.name)} version: home page">`:mockScreen(v,p);
+  }
+
+  /* Card in the Design section */
   const deck=document.getElementById("deck");
-  design.forEach((w,i)=>{const c=document.createElement("article");c.className="dcard";w.bg=designBg(i);
+  PROJECTS.forEach((p,i)=>{
+    const c=document.createElement("article");c.className="dcard";
     c.style.top=`calc(${84+i*14}px + env(safe-area-inset-top,0px))`;
-    c.innerHTML=`<button class="ph ${i===1||i===3?"":"light"}" type="button" style="background:${w.bg}" data-label="${w.type} · mockup" aria-label="Open project ${i+1}"></button>
-      <div class="dmeta"><span class="no">${pad(i+1)} — ${w.type}</span><h3>${w.title}</h3>
-      <dl class="facts"><dt>Year</dt><dd>${w.year}</dd><dt>For</dt><dd>${w.client}</dd><dt>Tools</dt><dd>${w.tools}</dd></dl>
-      <p class="todo" style="margin:0">${w.desc}</p><a class="go" href="${w.link}">View in Figma ↗</a></div>`;
-    c.querySelector("button").onclick=()=>openPlaceholder({...w,kind:w.kind+" · "+w.type},[["Year",w.year],["For",w.client],["Tools",w.tools]]);deck.appendChild(c);});
+    const quad=p.versions.map(v=>`<span class="q">${p.thumbs&&p.thumbs[v.key]?`<img src="${p.thumbs[v.key]}" alt="" loading="lazy">`:stageFor(p,v)}</span>`).join("");
+    c.innerHTML=`<button class="dcover" type="button" aria-label="Open ${esc(p.title)} case study">${p.images.cover?`<img src="${p.images.cover}" alt="">`:`<span class="quad">${quad}</span>`}</button>
+      <div class="dmeta"><span class="no">${p.no} — ${esc(p.type)}</span><h3>${esc(p.title)}<span class="dsub">${esc(p.sub)}</span></h3>
+      <dl class="facts"><dt>Year</dt><dd>${p.year}</dd><dt>For</dt><dd>${esc(p.for)}</dd><dt>Tools</dt><dd>${esc(p.tools)}</dd></dl>
+      <p class="dshort">${esc(p.short)}</p>
+      <div class="dbtns"><button class="go" type="button">Read the case →</button><a class="go" href="${p.proto}" target="_blank" rel="noopener">Open prototype ↗</a></div></div>`;
+    c.querySelector(".dcover").onclick=c.querySelector("button.go").onclick=()=>openCase(p.id,true);
+    deck.appendChild(c);
+  });
+
+  /* Case study page */
+  const caseEl=document.getElementById("case"),caseBody=document.getElementById("caseBody");
+  let caseCtx=null,caseSaved=0,casePushed=false;
+  function renderCase(p){
+    const list=a=>`<ul class="clist">${a.map(([k,v])=>`<li><b>${esc(k)}:</b> ${esc(v)}</li>`).join("")}</ul>`;
+    const ps=a=>a.map(t=>`<p>${esc(t)}</p>`).join("");
+    caseBody.innerHTML=`
+      <header class="chero">
+        <span class="ceyebrow">${p.no} — ${esc(p.type)} · ${p.year}</span>
+        <h2><span class="w">${esc(p.title)}</span></h2>
+        <p class="csub">${esc(p.sub)}</p>
+        <div class="clede"><p class="big">${esc(p.short)}</p>${ps(p.intro)}</div>
+      </header>
+      <section class="idswitch" aria-label="Four identities">
+        <div class="cblock-head"><span class="ceyebrow">Four identities</span><p>Each version was built as its own identity: palette, type system, graphic details and imagery chosen to tell a different story about the same studio.</p></div>
+        <div class="idgrid">
+          <div class="idstage" id="idStage"></div>
+          <div class="idinfo" id="idInfo" aria-live="polite"></div>
+        </div>
+        <div class="idbar" role="tablist" aria-label="Choose a version">${p.versions.map((v,i)=>`<button type="button" role="tab" data-i="${i}" aria-label="${esc(v.name)}">${ICONS[v.key]}<span>${esc(v.name)}</span></button>`).join("")}</div>
+        <p class="cquote">${esc(p.headlineNote)}</p>
+      </section>
+      <section class="cblock"><span class="ceyebrow">The idea</span><div>${ps(p.idea)}<h4>What stays the same in all four versions</h4>${list(p.same)}</div></section>
+      <section class="cblock"><span class="ceyebrow">Interaction and prototype</span><div>${ps(p.interaction)}${list(p.interList)}</div></section>
+      <section class="cblock"><span class="ceyebrow">Imagery</span><div>${ps(p.imagery)}</div></section>
+      <section class="cblock"><span class="ceyebrow">Process and my role</span><div>${ps(p.role)}<h4>My process for each version</h4><ol class="csteps">${p.steps.map(s=>`<li>${esc(s)}</li>`).join("")}</ol><p>${esc(p.toolsLine)}</p><div class="cnote">${ps(p.ai)}</div></div></section>
+      <section class="cblock"><span class="ceyebrow">What this project shows</span><div>${ps(p.shows)}</div></section>
+      <div class="cend"><a class="cproto" href="${p.proto}" target="_blank" rel="noopener"><small>Try it yourself</small><span>Open the prototype ↗</span></a></div>`;
+    const stage=caseBody.querySelector("#idStage"),info=caseBody.querySelector("#idInfo"),tabs=[...caseBody.querySelectorAll(".idbar button")];
+    function show(i){
+      const v=p.versions[i];
+      tabs.forEach((t,j)=>{t.setAttribute("aria-selected",j===i);t.tabIndex=j===i?0:-1;});
+      caseBody.querySelector(".idswitch").style.setProperty("--idbg",v.mock.bg);
+      caseBody.querySelector(".idswitch").style.setProperty("--idac",v.mock.accent);
+      const html=stageFor(p,v);
+      if(animate){gsap.to(stage,{opacity:0,y:10,duration:.2,onComplete:()=>{stage.innerHTML=html;gsap.to(stage,{opacity:1,y:0,duration:.45,ease:"power2.out"});}});}
+      else stage.innerHTML=html;
+      info.innerHTML=`<span class="ino">${v.no}</span><h4>${esc(v.name)}</h4><p class="imood">${esc(v.mood)}</p>
+        <dl class="facts"><dt>Palette</dt><dd><span class="sw">${v.palette.map(([n,c])=>`<span class="swc" style="--c:${c}" title="${esc(n)}"></span>`).join("")}</span>${v.palette.map(x=>esc(x[0])).join(", ")}</dd>
+        <dt>Type</dt><dd>${esc(v.type)}</dd><dt>Details</dt><dd>${esc(v.details)}</dd></dl>`;
+    }
+    tabs.forEach((t,i)=>{t.onclick=()=>show(i);t.onkeydown=e=>{if(e.key==="ArrowRight"||e.key==="ArrowLeft"){const n=(i+(e.key==="ArrowRight"?1:-1)+tabs.length)%tabs.length;tabs[n].focus();show(n);}};});
+    show(0);
+  }
+  function openCase(id,push){
+    const p=PROJECTS.find(x=>x.id===id);if(!p)return;
+    if(push){try{history.pushState({c:id},"","#"+id);casePushed=true;}catch(e){}}
+    caseSaved=window.scrollY;caseEl.hidden=false;document.documentElement.style.overflow="hidden";document.documentElement.classList.add("series-open");
+    renderCase(p);caseEl.scrollTop=0;
+    if(caseCtx){caseCtx.revert();caseCtx=null;}
+    if(animate){
+      gsap.fromTo(caseEl,{clipPath:"inset(100% 0% 0% 0%)"},{clipPath:"inset(0% 0% 0% 0%)",duration:.9,ease:"expo.inOut",onComplete:()=>{caseEl.style.clipPath="";}});
+      caseCtx=gsap.context(()=>{
+        gsap.from(".chero h2 .w",{yPercent:110,duration:1.1,ease:"expo.out",delay:.3});
+        gsap.from(".chero .csub,.chero .ceyebrow,.chero .clede",{opacity:0,y:16,duration:.8,stagger:.08,delay:.45});
+        gsap.utils.toArray("#case .cblock,#case .idswitch").forEach(b=>gsap.from(b,{opacity:0,y:40,duration:.9,ease:"power3.out",scrollTrigger:{scroller:caseEl,trigger:b,start:"top 88%",once:true}}));
+      },caseEl);
+      ScrollTrigger.refresh();
+    }
+    document.getElementById("cBack").focus({preventScroll:true});
+  }
+  function closeCase(fromUser){
+    if(caseEl.hidden)return;
+    if(fromUser&&casePushed&&history.state&&history.state.c){history.back();return;}
+    if(fromUser){try{history.replaceState(null,"",location.pathname+location.search);}catch(e){}}
+    const done=()=>{caseEl.hidden=true;caseEl.style.clipPath="";if(caseCtx){caseCtx.revert();caseCtx=null;}
+      document.documentElement.style.overflow="";document.documentElement.classList.remove("series-open");window.scrollTo(0,caseSaved);if(animate)ScrollTrigger.refresh();};
+    if(animate)gsap.to(caseEl,{clipPath:"inset(0% 0% 100% 0%)",duration:.7,ease:"expo.inOut",onComplete:done});else done();
+  }
+  document.getElementById("cBack").onclick=()=>closeCase(true);
+  document.getElementById("cProtoTop").href=PROTO;
+  window.addEventListener("popstate",()=>{const id=location.hash.slice(1);if(PROJECTS.some(p=>p.id===id))openCase(id,false);else{casePushed=false;closeCase(false);}});
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!caseEl.hidden&&viewer.hidden)closeCase(true);});
 
   /* ---------- Header nav ---------- */
   document.querySelectorAll('.top a[href^="#"]').forEach(a=>a.addEventListener("click",e=>{const t=document.querySelector(a.getAttribute("href"));if(!t)return;e.preventDefault();
@@ -535,7 +752,8 @@ img{display:block}
 
   /* Deep link: #urban, #nature, #people, #school, #pencil open a series */
   const startId=location.hash.slice(1);
-  if(ALL.some(s=>s.id===startId&&!s.soon))setTimeout(()=>openSeries(startId,false),animate?50:0);
+  if(PROJECTS.some(p=>p.id===startId))setTimeout(()=>openCase(startId,false),animate?50:0);
+  else if(ALL.some(s=>s.id===startId&&!s.soon))setTimeout(()=>openSeries(startId,false),animate?50:0);
 
   /* ---------- Home page motion ---------- */
   if(!animate)return;
