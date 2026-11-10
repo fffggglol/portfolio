@@ -74,9 +74,9 @@ img{display:block}
 .photo .intro{grid-template-columns:auto minmax(0,1fr);gap:clamp(32px,6vw,96px)}
 .photo .intro h2{white-space:nowrap;font-size:clamp(44px,8vw,128px)}
 .photo .intro .lede{max-width:72ch}
-.art .intro{grid-template-columns:minmax(0,.9fr) minmax(0,1.5fr);column-gap:clamp(24px,3vw,48px)}
-.art .intro h2{font-size:clamp(44px,7vw,108px)}
-.art .intro .lede{max-width:none;font-size:15px}
+.art .intro,.design .intro{grid-template-columns:minmax(0,.9fr) minmax(0,1.5fr);column-gap:clamp(24px,3vw,48px)}
+.art .intro h2,.design .intro h2{font-size:clamp(44px,7vw,108px)}
+.art .intro .lede,.design .intro .lede{max-width:none;font-size:15px}
 .serieswrap{position:relative;padding-bottom:18vh;padding-left:var(--side-l);padding-right:var(--side-r)}
 .index{list-style:none;margin:0;padding:0;border-top:1px solid rgba(232,227,225,.2);position:relative;z-index:2}
 .index li{border-bottom:1px solid rgba(232,227,225,.2)}
@@ -94,7 +94,7 @@ img{display:block}
 .ithumbs button{border:0;padding:0;background:none;flex:none;cursor:pointer}
 .ithumbs img{height:72px;width:auto;border-radius:2px}
 @media (hover:none){.ithumbs{display:flex}.irow .rt{display:none}.irow{grid-template-columns:2.5em minmax(0,1fr)}}
-@media (max-width:720px){.photo .intro,.art .intro{grid-template-columns:1fr}.irow{grid-template-columns:2.5em minmax(0,1fr);row-gap:6px}.irow .rt{grid-column:2;text-align:left}}
+@media (max-width:720px){.photo .intro,.art .intro,.design .intro{grid-template-columns:1fr}.irow{grid-template-columns:2.5em minmax(0,1fr);row-gap:6px}.irow .rt{grid-column:2;text-align:left}}
 
 /* Series (category page) */
 .series{position:fixed;inset:0;z-index:70;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;background:var(--sbg,#E4DDDB);color:var(--graphite)}
@@ -183,6 +183,7 @@ img{display:block}
 .csub{margin:0;font-family:var(--display);font-style:italic;font-weight:340;font-size:clamp(24px,3vw,40px);color:var(--rose);font-variation-settings:"SOFT" 100,"opsz" 72}
 .clede{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,64px);margin-top:4vh}
 .clede p{margin:0;font-size:17px;line-height:1.6}
+.clede .facts{align-content:start;gap:12px 22px}
 .clede .big{font-family:var(--display);font-size:clamp(20px,1.9vw,26px);line-height:1.35;font-variation-settings:"SOFT" 100,"opsz" 36}
 .idswitch{--idbg:#F6F0E6;--idac:#A7B49B;padding-block:7vh;border-top:1px solid var(--stone);display:grid;gap:28px}
 .cblock-head{display:grid;grid-template-columns:minmax(160px,.4fr) minmax(0,1fr);gap:24px;align-items:baseline}
@@ -221,6 +222,18 @@ img{display:block}
 .cproto span{font-family:var(--display);font-weight:330;font-size:clamp(40px,7vw,104px);line-height:.95;letter-spacing:-.03em;font-variation-settings:"SOFT" 100,"opsz" 144;transition:color .3s}
 .cproto:hover span{color:var(--rose)}
 @media (max-width:860px){.clede,.idgrid,.cblock,.cblock-head{grid-template-columns:1fr}.idbar button span{display:none}.idbar button{padding:10px}}
+
+.cshot{margin:0 0 6vh;}
+.cshot img{width:100%;border-radius:8px;box-shadow:0 1px 2px rgba(58,50,52,.1),0 30px 60px -36px rgba(58,50,52,.55)}
+.cshot figcaption{margin-top:12px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.cgallery{border-top:1px solid var(--stone);padding-top:6vh}
+.cgallery>.ceyebrow{margin-bottom:28px}
+.cvids>div{max-width:none}
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.vgrid video{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:6px;background:#ddd;display:block}
+.cend{display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px 48px}
+.cproto.small span{font-size:clamp(20px,2vw,28px)}
+@media (max-width:640px){.vgrid{grid-template-columns:1fr}}
 
 /* About */
 .about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:32px;padding-block:16vh 10vh;border-top:1px solid var(--stone);margin-left:var(--side-l);margin-right:var(--side-r)}
@@ -307,7 +320,7 @@ img{display:block}
       <h2>Web &amp; graphic <em>design</em></h2>
       <div>
         <span class="count">Web design · Graphic design</span>
-        <p class="lede"><span class="todo">Your intro to design work: websites, banners, packaging, and how you approach a brief.</span></p>
+        <p class="lede">Design is my primary focus. I’m still studying, but I’ve taken courses and already have various projects. Right now it is a hobby, but in the future I want to work in this field and dedicate my life to it.</p>
       </div>
     </div>
     <div class="deck" id="deck"></div>
@@ -597,7 +610,7 @@ img{display:block}
   const PROTO="https://www.figma.com/proto/12TBn2QgMo1mZaJ4vh21Uz/Untitled?node-id=192-4271&p=f&viewport=136%2C824%2C0.55&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=192%3A4271&page-id=0%3A1";
   const PROJECTS=[{
     id:"lumiere",no:"01",type:"Web design · Concept",title:"Lumière",sub:"One Brand, Four Identities",year:"2026",
-    for:"Concept project (fictional brand)",tools:"Figma, Nano Banana",proto:PROTO,
+    for:"Concept project (fictional brand)",tools:"Figma, Nano Banana",proto:PROTO,links:[["Open prototype ↗",PROTO]],
     short:"One flower studio, four completely different websites. Lumière is a concept project I designed to show that the same business, with the same content and the same products, can look and feel entirely different depending on its visual identity.",
     intro:["Lumière is not a real business. It is a fictional boutique studio for rare and exotic flowers, created as a showcase case for my portfolio. Instead of one website, I designed four full identities for it: each with its own colour palette, typography, imagery and interactions, and a switcher that lets you jump between them in the prototype."],
     idea:["Clients often think of design as “making it pretty”. I wanted to show that design is a set of decisions, and that changing those decisions changes how a brand is perceived, even when nothing else changes.",
@@ -637,6 +650,18 @@ img{display:block}
       "For me it was a way to show that I can work across very different styles, build a full visual system from scratch for each of them, and turn it into a working, interactive website prototype. Try the switcher at the bottom of the page and see the same studio four times."],
     images:{romantic:"design/lumiere/romantic.jpg",editorial:"design/lumiere/editorial.jpg",pixel:"design/lumiere/pixel.jpg",night:"design/lumiere/night.jpg"},
     thumbs:{romantic:"design/lumiere/thumb/romantic.jpg",editorial:"design/lumiere/thumb/editorial.jpg",pixel:"design/lumiere/thumb/pixel.jpg",night:"design/lumiere/thumb/night.jpg"}
+  },{
+    id:"teplo",no:"02",type:"Web design · E-commerce concept",title:"Teplo",sub:"Handmade Ceramics E-commerce Website",year:"2026",
+    for:"Design course project (fictional brand)",tools:"Figma, AI image and video tools, Claude Code, Vercel",
+    links:[["Visit the live site ↗","https://teplo-ceramics.vercel.app/"],["View on Behance ↗","https://www.behance.net/gallery/257596443/Teplo-Handmade-Ceramics-E-commerce-Website"]],
+    cover:"design/teplo/thumb/hero.jpg",
+    short:"Teplo is a concept website and brand identity for an imaginary handmade ceramics studio. The project was created as a showcase piece for a design course focused on using AI tools to generate video and images, and on applying those skills in everyday creative work.",
+    qa:[["What is this? Who is it for? What was the task?",["Teplo is a concept website and brand identity for an imaginary handmade ceramics studio. The project was created as a showcase piece for a design course focused on using AI tools to generate video and images, and on applying those skills in everyday creative work."]],
+        ["What did I do?",["I created the animations and visuals, came up with the design concept and the overall look using Figma. I did not write the code myself. I published the site with Claude Code and hosted on Vercel so it works as a real, live website that you can open and scroll through. Most of my work here was UX/UI design."]],
+        ["How did I arrive at the solution?",["I\u2019m passionate about ceramics, it\u2019s one of my hobbies. I wanted to build something unusual and bring some new visuals, so I decided to create a brand identity and a website for a ceramics brand."]],
+        ["How does it work?",["The best way to see how it works is to open the website and click around."]]],
+    gallery:[["hero","Home"],["explore","Have fun exploring."],["shape","Shop by shape."],["maker","Made by hand, start to finish."],["process","From clay to cup"],["newsletter","Be first to the next kiln load."],["footer","Footer"]].map(([f,c])=>({src:"design/teplo/"+f+".jpg",cap:c})),
+    videos:["n1","n2","n3","n4"].map(n=>({src:"design/teplo/video/"+n+".mp4",poster:"design/teplo/video/"+n+".jpg"}))
   }];
 
   const ICONS={
@@ -662,12 +687,12 @@ img{display:block}
   PROJECTS.forEach((p,i)=>{
     const c=document.createElement("article");c.className="dcard";
     c.style.top=`calc(${84+i*14}px + env(safe-area-inset-top,0px))`;
-    const quad=p.versions.map(v=>`<span class="q">${p.thumbs&&p.thumbs[v.key]?`<img src="${p.thumbs[v.key]}" alt="" loading="lazy">`:stageFor(p,v)}</span>`).join("");
-    c.innerHTML=`<button class="dcover" type="button" aria-label="Open ${esc(p.title)} case study">${p.images.cover?`<img src="${p.images.cover}" alt="">`:`<span class="quad">${quad}</span>`}</button>
+    const quad=p.versions?p.versions.map(v=>`<span class="q">${p.thumbs&&p.thumbs[v.key]?`<img src="${p.thumbs[v.key]}" alt="" loading="lazy">`:stageFor(p,v)}</span>`).join(""):"";
+    c.innerHTML=`<button class="dcover" type="button" aria-label="Open ${esc(p.title)} case study">${p.cover?`<img src="${p.cover}" alt="" loading="lazy">`:`<span class="quad">${quad}</span>`}</button>
       <div class="dmeta"><span class="no">${p.no} — ${esc(p.type)}</span><h3>${esc(p.title)}<span class="dsub">${esc(p.sub)}</span></h3>
       <dl class="facts"><dt>Year</dt><dd>${p.year}</dd><dt>For</dt><dd>${esc(p.for)}</dd><dt>Tools</dt><dd>${esc(p.tools)}</dd></dl>
       <p class="dshort">${esc(p.short)}</p>
-      <div class="dbtns"><button class="go" type="button">Read the case →</button><a class="go" href="${p.proto}" target="_blank" rel="noopener">Open prototype ↗</a></div></div>`;
+      <div class="dbtns"><button class="go" type="button">Read the case →</button>${p.links.map(([l,u])=>`<a class="go" href="${u}" target="_blank" rel="noopener">${esc(l)}</a>`).join("")}</div></div>`;
     c.querySelector(".dcover").onclick=c.querySelector("button.go").onclick=()=>openCase(p.id,true);
     deck.appendChild(c);
   });
@@ -675,9 +700,25 @@ img{display:block}
   /* Case study page */
   const caseEl=document.getElementById("case"),caseBody=document.getElementById("caseBody");
   let caseCtx=null,caseSaved=0,casePushed=false;
+  function renderGeneric(p,ps){
+    caseBody.innerHTML=`
+      <header class="chero">
+        <span class="ceyebrow">${p.no} — ${esc(p.type)} · ${p.year}</span>
+        <h2><span class="w">${esc(p.title)}</span></h2>
+        <p class="csub">${esc(p.sub)}</p>
+        <div class="clede"><p class="big">${esc(p.short)}</p><dl class="facts"><dt>Year</dt><dd>${p.year}</dd><dt>For</dt><dd>${esc(p.for)}</dd><dt>Tools</dt><dd>${esc(p.tools)}</dd></dl></div>
+      </header>
+      ${p.gallery?`<figure class="cshot first"><img src="${p.gallery[0].src}" alt="${esc(p.title)}: ${esc(p.gallery[0].cap)}"></figure>`:""}
+      ${p.qa.slice(1).map(([q,a])=>`<section class="cblock"><span class="ceyebrow">${esc(q)}</span><div>${ps(a)}</div></section>`).join("")}
+      ${p.videos?`<section class="cblock cvids"><span class="ceyebrow">Animations</span><div class="vgrid">${p.videos.map(v=>`<video src="${v.src}" poster="${v.poster}" muted loop playsinline preload="metadata" ${reduce?"controls":"autoplay"}></video>`).join("")}</div></section>`:""}
+      ${p.gallery?`<section class="cgallery"><span class="ceyebrow">The website</span>${p.gallery.slice(1).map(g=>`<figure class="cshot"><img src="${g.src}" alt="${esc(p.title)}: ${esc(g.cap)}" loading="lazy"><figcaption>${esc(g.cap)}</figcaption></figure>`).join("")}</section>`:""}
+      <div class="cend">${p.links.map(([l,u],i)=>`<a class="cproto${i?" small":""}" href="${u}" target="_blank" rel="noopener">${i?"":"<small>Try it yourself</small>"}<span>${esc(l)}</span></a>`).join("")}</div>`;
+  }
   function renderCase(p){
     const list=a=>`<ul class="clist">${a.map(([k,v])=>`<li><b>${esc(k)}:</b> ${esc(v)}</li>`).join("")}</ul>`;
     const ps=a=>a.map(t=>`<p>${esc(t)}</p>`).join("");
+    document.getElementById("cProtoTop").href=p.links[0][1];document.getElementById("cProtoTop").textContent=p.links[0][0];
+    if(!p.versions){renderGeneric(p,ps);return;}
     caseBody.innerHTML=`
       <header class="chero">
         <span class="ceyebrow">${p.no} — ${esc(p.type)} · ${p.year}</span>
@@ -727,7 +768,7 @@ img{display:block}
       caseCtx=gsap.context(()=>{
         gsap.from(".chero h2 .w",{yPercent:110,duration:1.1,ease:"expo.out",delay:.3});
         gsap.from(".chero .csub,.chero .ceyebrow,.chero .clede",{opacity:0,y:16,duration:.8,stagger:.08,delay:.45});
-        gsap.utils.toArray("#case .cblock,#case .idswitch").forEach(b=>gsap.from(b,{opacity:0,y:40,duration:.9,ease:"power3.out",scrollTrigger:{scroller:caseEl,trigger:b,start:"top 88%",once:true}}));
+        gsap.utils.toArray("#case .cblock,#case .idswitch,#case .cshot").forEach(b=>gsap.from(b,{opacity:0,y:40,duration:.9,ease:"power3.out",scrollTrigger:{scroller:caseEl,trigger:b,start:"top 88%",once:true}}));
       },caseEl);
       ScrollTrigger.refresh();
     }
@@ -742,8 +783,7 @@ img{display:block}
     if(animate)gsap.to(caseEl,{clipPath:"inset(0% 0% 100% 0%)",duration:.7,ease:"expo.inOut",onComplete:done});else done();
   }
   document.getElementById("cBack").onclick=()=>closeCase(true);
-  document.getElementById("cProtoTop").href=PROTO;
-  window.addEventListener("popstate",()=>{const id=location.hash.slice(1);if(PROJECTS.some(p=>p.id===id))openCase(id,false);else{casePushed=false;closeCase(false);}});
+    window.addEventListener("popstate",()=>{const id=location.hash.slice(1);if(PROJECTS.some(p=>p.id===id))openCase(id,false);else{casePushed=false;closeCase(false);}});
   document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!caseEl.hidden&&viewer.hidden)closeCase(true);});
 
   /* ---------- Header nav ---------- */
