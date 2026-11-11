@@ -205,7 +205,7 @@ img{display:block}
 .idbar button:hover:not([aria-selected="true"]){color:var(--graphite)}
 .cquote{margin:8px auto 0;max-width:60ch;text-align:center;font-family:var(--display);font-style:italic;font-size:clamp(19px,1.8vw,24px);line-height:1.4;font-variation-settings:"SOFT" 100,"opsz" 36}
 .cblock{display:grid;grid-template-columns:minmax(160px,.4fr) minmax(0,1fr);gap:24px;padding-block:6vh;border-top:1px solid var(--stone)}
-.cblock>div{max-width:66ch}
+.cblock>div{max-width:66ch;min-width:0}
 .cblock p{margin:0 0 14px;font-size:17px;line-height:1.6}
 .cblock h4{margin:22px 0 10px;font-family:var(--display);font-weight:400;font-size:22px;font-variation-settings:"SOFT" 100,"opsz" 36}
 .clist{margin:0;padding:0;list-style:none;display:grid;gap:12px}
@@ -234,6 +234,15 @@ img{display:block}
 .cend{display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px 48px}
 .cproto.small span{font-size:clamp(20px,2vw,28px)}
 @media (max-width:640px){.vgrid{grid-template-columns:1fr}}
+
+.cshots{display:grid;gap:4vh;margin-bottom:6vh}
+.cshots .cshot{margin:0}
+.ctable{overflow-x:auto;margin:6px 0 22px;border:1px solid var(--stone);border-radius:8px;background:#F3EFEE}
+.ctable table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px;line-height:1.45}
+.ctable th,.ctable td{text-align:left;vertical-align:top;padding:12px 14px;border-bottom:1px solid var(--stone)}
+.ctable tr:last-child th,.ctable tr:last-child td{border-bottom:0}
+.ctable thead th{font-family:var(--mono);font-weight:400;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--rose);background:color-mix(in srgb,var(--blush) 40%,transparent)}
+.ctable tbody th{font-weight:500;width:26%}
 
 /* About */
 .about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:32px;padding-block:16vh 10vh;border-top:1px solid var(--stone);margin-left:var(--side-l);margin-right:var(--side-r)}
@@ -662,7 +671,7 @@ img{display:block}
         ["How does it work?",["The best way to see how it works is to open the website and click around."]]],
     gallery:[["hero","Home"],["explore","Have fun exploring."],["shape","Shop by shape."],["maker","Made by hand, start to finish."],["process","From clay to cup"],["newsletter","Be first to the next kiln load."],["footer","Footer"]].map(([f,c])=>({src:"design/teplo/"+f+".jpg",cap:c})),
     videos:["n1","n2","n3","n4"].map(n=>({src:"design/teplo/video/"+n+".mp4",poster:"design/teplo/video/"+n+".jpg"}))
-  }];
+  },{"id": "mellow", "no": "03", "type": "Web design · Branding · Research", "title": "Mellow Beans", "sub": "A Coffee Roaster Website", "year": "2026", "for": "Personal project (fictional brand)", "tools": "Figma", "links": [["Open prototype ↗", "https://www.figma.com/proto/TEY6ojSpXHViKhHBbGkjYj/Untitled?scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1&node-id=1-3204&starting-point-node-id=1%3A3204"]], "cover": "design/mellow/thumb/hero.jpg", "short": "Mellow Beans is a bright, playful website for a small-batch specialty coffee roaster, built on research into what local coffee websites get wrong.", "intro": ["It is a concept project, not a real business: I invented the name, the brand, its story and every product. Everything in it was made by hand, without AI: the research, the identity, the copy, the packaging labels and mockups, the layouts and the prototype in Figma."], "hero": "hero", "sections": [{"h": "Why I made it", "ps": ["The project started while I was looking for work as a barista. I visited the websites of many local coffee shops and roasters just to find their contact details, and kept running into the same problems: outdated visuals, confusing navigation and products that were hard to find.", "None of them felt right, so I started writing down what worked and what didn't. That list turned into a comparison table, and the table turned into an idea: design my own roaster website that keeps the good parts and fixes the rest. I was learning the basics of web design at the same time, so this project is also where I put that learning into practice."]}, {"h": "Research", "ps": ["I compared three local roasters, Krema, Martini and Sparrow, on ten criteria: is it clear within 3 seconds what they sell, how strong the main call to action is, the brand mood, menu structure, how flavour is shown, purchase options, brewing guides, the cart, coffee subscriptions and price transparency."], "table": [["Criteria", "Krema", "Martini", "Sparrow"], ["Clear in 3 seconds?", "Yes", "Doubtful: drinks and cocktails come first", "Yes"], ["Main call to action", "Hidden: you must open a bag first", "A buy button right under each bag", "Hidden: pick type and weight first"], ["Mood", "Old, dark, cluttered navigation", "Fresh, colourful, easy to navigate", "Very bright but dated, no real packaging photos"], ["Finding the right coffee", "No filters at all", "Only light, medium and dark", "Filters by region, taste and category"], ["Flavour", "Text only, on the product page", "Barely shown", "Icons, no tags on the catalogue"], ["Grind and size", "Available", "Only 3 options", "Over 20 options"], ["Subscription", "Yes", "Yes", "No"]], "after": ["The pattern was clear: each site did one or two things well, but none of them made it easy to find a coffee you'd like, see its taste at a glance and buy it in a couple of clicks."]}, {"h": "Design decisions", "ps": ["Every key decision answers a problem from the research."], "list": [["Flavour Lanes instead of a wall of bags.", "Coffees are grouped into four colour-coded series: Limited (rare micro-lots), Dark (classic), Bright (fruity and floral, for pour-over) and Warm (chocolate and nut, for espresso). You choose by taste first, not by guessing."], ["Filters in the shop,", "so you can quickly narrow down to the coffee you are looking for."], ["Flavour you can see.", "Each product shows its series colour and tasting notes, and the product page lists origin, process, roast and notes in a simple table."], ["Grind and size in one place,", "with three clear sizes (12, 16 and 28 oz) and the price for each."], ["Clear prices and calls to action.", "The price and “Add to cart” sit right next to the product, on the catalogue and on the product page."], ["Subscription.", "A short “Never run out” section explains it in three steps, with a discount on every order."], ["Simple, uncluttered layout:", "big blocks, few elements per screen, nothing hidden behind extra clicks."]], "after": ["Beyond the shop, the site has a Producers page about direct trade and the four origins (Colombia, Ethiopia, Guatemala, Panama), and a Contact page with support details and a form."], "shots": [{"src": "design/mellow/lanes.jpg", "cap": "Flavor Lanes: four colour-coded series"}, {"src": "design/mellow/subscribe.jpg", "cap": "Never run out: the subscription in three steps"}]}, {"h": "Identity and packaging", "ps": ["Most coffee shops choose quiet minimalism, and most of them are easy to forget. I wanted Mellow Beans to feel bright, warm and memorable."], "list": [["Logo:", "the name set in Handjet inside a loose hand-drawn ellipse. I kept it deliberately simple and let the typeface carry the character. A small sun is the brand mark on every label, and a moon marks the decaf."], ["Typography:", "two fonts. Space Mono for all text: less ordinary than a standard sans, but still easy to read. Handjet, a semi-bold, squarish display face, as the accent for the logo, buttons and headlines. Together they feel crafted and a little playful, which suits a small roaster."], ["Colour:", "saturated full-width blocks in sunny yellow, sky blue, coral, sage green and plum, grounded by a deep coffee brown for text and the footer and a warm cream background."], ["Packaging:", "I designed labels for 14 coffees, from Sumatra Mandheling to Panama Geisha, each colour-coded by its series. The label always has the same layout: name, tasting notes, type, origin and process. I found the tin mockups, placed and edited every label myself."]], "shots": [{"src": "design/mellow/shop.jpg", "cap": "Tins with the series-coded labels"}, {"src": "design/mellow/footer.jpg", "cap": "The logo in the footer"}]}, {"h": "Accessibility and the prototype", "ps": ["I wanted the site to be comfortable for everyone, including people with low vision. So the type is large throughout, there are no tiny secondary headings, and I checked the colour contrast of text against each bright background.", "The Figma prototype covers the main journey: the home page, the shop with its filters by series, product pages, Producers and Contact. Writing full product pages for all 14 coffees would have been a lot of repetition, so I designed four of them in full detail as examples of the product page: Anaerobic Natural Ethiopia, Colombia Co-Ferment, Ethiopia Yirgacheffe and Colombia Decaf."], "shots": [{"src": "design/mellow/reviews.jpg", "cap": "Reviews"}, {"src": "design/mellow/newsletter.jpg", "cap": "Newsletter"}]}, {"h": "Outcome", "ps": ["Mellow Beans grew out of a real frustration and turned into a complete brand: research, identity, 14 packaging designs, copy and a clickable website prototype, all made by me while I was learning web design.", "It taught me to start from research instead of taste: every bright colour and big button here is there because a real coffee website made something harder than it should be. And it showed me that a small coffee brand doesn't have to be minimal to feel trustworthy. It can be loud, warm and still easy to use."]}], "heroShot": {"src": "design/mellow/hero.jpg", "cap": "Home"}}];
 
   const ICONS={
     romantic:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/><g stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/></g></svg>',
@@ -700,6 +709,21 @@ img{display:block}
   /* Case study page */
   const caseEl=document.getElementById("case"),caseBody=document.getElementById("caseBody");
   let caseCtx=null,caseSaved=0,casePushed=false;
+  function renderSections(p,ps){
+    const shot=(g,first)=>`<figure class="cshot${first?" first":""}"><img src="${g.src}" alt="${esc(p.title)}: ${esc(g.cap)}" loading="${first?"eager":"lazy"}">${first?"":`<figcaption>${esc(g.cap)}</figcaption>`}</figure>`;
+    const table=t=>`<div class="ctable"><table><thead><tr>${t[0].map(c=>`<th scope="col">${esc(c)}</th>`).join("")}</tr></thead><tbody>${t.slice(1).map(r=>`<tr>${r.map((c,i)=>i?`<td>${esc(c)}</td>`:`<th scope="row">${esc(c)}</th>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+    const blist=l=>`<ul class="clist">${l.map(([k,v])=>`<li><b>${esc(k)}</b> ${esc(v)}</li>`).join("")}</ul>`;
+    caseBody.innerHTML=`
+      <header class="chero">
+        <span class="ceyebrow">${p.no} — ${esc(p.type)} · ${p.year}</span>
+        <h2><span class="w">${esc(p.title)}</span></h2>
+        <p class="csub">${esc(p.sub)}</p>
+        <div class="clede"><div><p class="big">${esc(p.short)}</p>${p.intro?`<div style="margin-top:18px">${ps(p.intro)}</div>`:""}</div><dl class="facts"><dt>Year</dt><dd>${p.year}</dd><dt>For</dt><dd>${esc(p.for)}</dd><dt>Tools</dt><dd>${esc(p.tools)}</dd></dl></div>
+      </header>
+      ${p.heroShot?shot(p.heroShot,true):""}
+      ${p.sections.map(sec=>`<section class="cblock"><span class="ceyebrow">${esc(sec.h)}</span><div>${ps(sec.ps||[])}${sec.table?table(sec.table):""}${sec.list?blist(sec.list):""}${ps(sec.after||[])}</div></section>${sec.shots?`<div class="cshots">${sec.shots.map(g=>shot(g)).join("")}</div>`:""}`).join("")}
+      <div class="cend">${p.links.map(([l,u],i)=>`<a class="cproto${i?" small":""}" href="${u}" target="_blank" rel="noopener">${i?"":"<small>Try it yourself</small>"}<span>${esc(l)}</span></a>`).join("")}</div>`;
+  }
   function renderGeneric(p,ps){
     caseBody.innerHTML=`
       <header class="chero">
@@ -718,6 +742,7 @@ img{display:block}
     const list=a=>`<ul class="clist">${a.map(([k,v])=>`<li><b>${esc(k)}:</b> ${esc(v)}</li>`).join("")}</ul>`;
     const ps=a=>a.map(t=>`<p>${esc(t)}</p>`).join("");
     document.getElementById("cProtoTop").href=p.links[0][1];document.getElementById("cProtoTop").textContent=p.links[0][0];
+    if(p.sections){renderSections(p,ps);return;}
     if(!p.versions){renderGeneric(p,ps);return;}
     caseBody.innerHTML=`
       <header class="chero">
