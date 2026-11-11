@@ -254,7 +254,10 @@ img{display:block}
 /* About */
 .about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:32px;padding-block:16vh 10vh;border-top:1px solid var(--stone);margin-left:var(--side-l);margin-right:var(--side-r)}
 .about h2{margin:0;font-family:var(--display);font-weight:330;font-size:clamp(40px,6vw,88px);line-height:.95;letter-spacing:-.03em;font-variation-settings:"SOFT" 100,"opsz" 144}
-.about p{max-width:52ch;margin:0 0 14px}
+.about p{max-width:52ch;margin:0 0 16px;font-size:17px;line-height:1.6}
+.about .lead{font-family:var(--display);font-size:clamp(20px,2vw,27px);line-height:1.35;font-variation-settings:"SOFT" 100,"opsz" 36;max-width:30ch}
+.about .mailto{margin-top:10px;font-family:var(--mono);font-size:13px}
+.about .mailto a{text-decoration:none;border-bottom:1px solid var(--rose);padding-bottom:2px}
 .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:28px;padding-left:var(--side-l);padding-right:var(--side-r);font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
 @media (max-width:720px){.about{grid-template-columns:1fr}}
 
@@ -345,9 +348,9 @@ img{display:block}
   <section class="about" id="about" data-bg="#E8E3E1">
     <h2>About</h2>
     <div>
-      <p><span class="todo">Your short artist statement goes here, written by you.</span></p>
-      <p><span class="todo">Where you are from, what you study, what you want to explore next.</span></p>
-      <p style="font-family:var(--mono);font-size:13px">your.email@example.com</p>
+      <p class="lead">My favorite thing about design is creativity that is clearly defined by rules and the rationale behind the decisions made.</p>
+      <p>I was born in Ukraine and lived there my entire life until I moved to America in the fall of 2025. I plan to study design, specifically web design, and I also enjoy independently exploring the history and philosophy of design. For this reason, I am most interested in user-centered design, as it allows me to help people online.</p>
+      <p class="mailto"><a href="mailto:mishelbelaya@gmail.com">mishelbelaya@gmail.com</a></p>
     </div>
   </section>
   <footer class="foot"><span>© 2026 Mishel Bila</span><span>All work by the artist unless noted</span></footer>
